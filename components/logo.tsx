@@ -5,7 +5,7 @@ import localFont from "next/font/local"
 import { cn } from "@/lib/utils"
 
 const headingFont = localFont({
-  src: "../public/font.woff2"
+  src: "../public/fonts/font.woff2"
 })
 
 export const Logo = () => {
@@ -23,7 +23,7 @@ export const Logo = () => {
           "text-lg text-neutral-700 pb-1",
           headingFont.className
         )}>
-          my-task-management
+          Task Manager
         </p>
       </div>
     </Link>
