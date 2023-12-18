@@ -1,15 +1,14 @@
 "use client"
 // ログイン後ページ
-import { useAuth, useUser } from "@clerk/nextjs"
+import { UserButton } from "@clerk/nextjs"
 
 const ProtectedPage = () => {
-  const { userId } = useAuth()
-  const { user } = useUser()
-  
+
   return (
     <div>
-      User: {user?.firstName}
-      UserId: {userId}
+      <UserButton
+        afterSignOutUrl = "/"
+      />
     </div>
   )
 }
