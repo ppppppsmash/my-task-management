@@ -1,10 +1,10 @@
 "use client"
 // ログイン後ページ
-import { auth, currentUser } from "@clerk/nextjs"
+import { useAuth, useUser } from "@clerk/nextjs"
 
-const ProtectedPage = async () => {
-  const user = await currentUser()
-  const { userId } = auth()
+const ProtectedPage = () => {
+  const { userId } = useAuth()
+  const { user } = useUser()
   
   return (
     <div>
