@@ -9,6 +9,13 @@ NEXT_PUBLIC_CLERK_SIGN_UP_URL=
 NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=
 
+## directory
+http://localhost:3000
+http://localhost:3000/sign-in
+http://localhost:3000/sign-up
+http://localhost:3000/select-org
+
+
 ## Getting Started
 
 First, run the development server:
