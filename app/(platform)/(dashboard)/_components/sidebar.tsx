@@ -44,6 +44,8 @@ export const Sidebar = ({
       return acc
     }, [])
 
+  // { "123": true } => ["123"]
+
   const onExpand = (id: string) => {
     setExpanded((curr) => ({
       ...curr,
@@ -80,6 +82,18 @@ export const Sidebar = ({
           </Link>
         </Button>
       </div>
+
+      <Accordion
+        type="multiple"
+        defaultValue={defaultAccordionValue}
+        className="space-y-2"
+      >
+        {userMemberships.data.map(({ organization }) => (
+          <p key={organization.id}>
+            {organization.id}
+          </p>
+        ))}
+      </Accordion>
     </>
   )
 }
