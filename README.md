@@ -29,6 +29,7 @@ pnpm dev
   - Default, Neutral, use React Server Components
 - npx shadcn-ui@latest add button
 - npx shadcn-ui@latest add skeleton
+- npx shadcn-ui@latest add sheet
 
 
 #### zustand
