@@ -2,11 +2,24 @@
 import { OrganizationSwitcher, auth } from "@clerk/nextjs"
 
 const OrganizationIdPage = () => {
-  const { userId, orgId } = auth()
+  async function create(formData: FormData) {
+    "use server"
+
+    console.log('use server!')
+  }
+  console.log('ログインできた！')
 
   return (
     <div>
-      Organization Page
+      <form action={create}>
+        <input
+          id="title"
+          name="title"
+          placeholder="タイトルを入力してください"
+          required
+          className="border-black border p-1"
+        />
+      </form>
     </div>
   )
 }
