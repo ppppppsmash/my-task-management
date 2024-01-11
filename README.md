@@ -34,3 +34,8 @@ pnpm dev
 
 #### zustand
 - pnpm add zustand
+
+
+#### prisma
+pnpm add -D prisma
+npx prisma init
