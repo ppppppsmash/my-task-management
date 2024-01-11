@@ -39,3 +39,6 @@ pnpm dev
 #### prisma
 pnpm add -D prisma
 npx prisma init
+npx prisma generate
+npx prisma db push
+pnpm add @prisma/client
