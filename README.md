@@ -42,3 +42,6 @@ npx prisma init
 npx prisma generate
 npx prisma db push
 pnpm add @prisma/client
+
+#### prisma management console
+npx prisma studio

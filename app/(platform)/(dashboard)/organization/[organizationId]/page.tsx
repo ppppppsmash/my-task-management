@@ -1,3 +1,4 @@
+import { db } from "@/lib/db"
 // http://localhost:3000/organization/xxx
 import { OrganizationSwitcher, auth } from "@clerk/nextjs"
 
@@ -5,7 +6,12 @@ const OrganizationIdPage = () => {
   async function create(formData: FormData) {
     "use server"
 
-    console.log('use server!')
+    const title = formData.get("title") as string
+    await db.board.create({
+      data: {
+        title,
+      }
+    })
   }
   console.log('ログインできた！')
 
