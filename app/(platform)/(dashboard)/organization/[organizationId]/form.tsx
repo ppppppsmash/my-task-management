@@ -2,9 +2,9 @@
 
 import { useFormState } from "react-dom"
 
-import { Button } from "@/components/ui/button"
 import { create } from "@/actions/create-board"
 import { FormInput } from "@/app/(platform)/(dashboard)/organization/[organizationId]/form-input"
+import { FormButton } from "@/app/(platform)/(dashboard)/organization/[organizationId]/form-button"
 
 export const Form = () => {
   const initialState = { message: null, errors: {} }
@@ -16,9 +16,7 @@ export const Form = () => {
         <FormInput errors={state?.errors} />
       </div>
 
-      <Button type="submit">
-        送信
-      </Button>
+      <FormButton />
     </form>
   )
 }
