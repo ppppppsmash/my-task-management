@@ -45,3 +45,14 @@ pnpm add @prisma/client
 
 #### prisma management console
 npx prisma studio
+
+
+### server action
+
+```
+const { execute, data, error, fieldErrors } = useAction(safeAction, {
+  onSuccess: (data: Output) => {},
+  onError: (error: string) => {},
+  onComplete: () => {}
+})
+```
