@@ -2,6 +2,7 @@
 
 import { forwardRef } from "react"
 import { useFormState } from "react-dom"
+import { Label } from "@/components/ui/label"
 
 interface FormInputProps {
   id: string
@@ -34,9 +35,9 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(({
     <div className="space-y-2">
       <div className="space-y-1">
         {label ? (
-          <div>
+          <Label>
             Label
-          </div>
+          </Label>
         ) : null}
       </div>
     </div>
