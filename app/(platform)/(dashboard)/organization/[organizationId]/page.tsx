@@ -1,6 +1,6 @@
-import { Info } from "@/app/(platform)/(dashboard)/_components/info"
+import { Info } from "@/app/(platform)/(dashboard)/organization/[organizationId]/_components/info"
 import { Separator } from "@/components/ui/separator"
-import { BoardList } from "@/app/(platform)/(dashboard)/_components/board-list"
+import { BoardList } from "@/app/(platform)/(dashboard)/organization/[organizationId]/_components/board-list"
 
 const OrganizationIdPage = async () => {
   return (

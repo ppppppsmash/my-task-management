@@ -3,14 +3,17 @@
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger
+  PopoverTrigger,
+  PopoverClose
 } from "@/components/ui/popover"
+import { X } from "lucide-react"
 import { useAction } from "@/hooks/use-action"
 import { createBoard } from "@/actions/create-board"
 
 import { FormInput } from "@/components/form/form-input"
 import { FormSubmit } from "@/components/form/form-submit"
 import React from "react"
+import { Button } from "@/components/ui/button"
 
 interface FormPopoverProps {
   children: React.ReactNode
@@ -40,6 +43,15 @@ export const FormPopover = ({
         <div className="text-sm font-medium text-center text-neutral-600 pb-4">
           ボードを作成
         </div>
+
+        <PopoverClose asChild>
+          <Button
+            className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600"
+            variant="ghost"
+          >
+            <X className="h-4 w-4" />
+          </Button>
+        </PopoverClose>
       </PopoverContent>
     </Popover>
   )
