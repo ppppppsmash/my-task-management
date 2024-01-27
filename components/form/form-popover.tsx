@@ -6,6 +6,7 @@ import {
   PopoverTrigger,
   PopoverClose
 } from "@/components/ui/popover"
+import { toast } from "sonner"
 import { X } from "lucide-react"
 import { useAction } from "@/hooks/use-action"
 import { createBoard } from "@/actions/create-board/index"
@@ -31,9 +32,11 @@ export const FormPopover = ({
   const { execute, fieldErrors } = useAction(createBoard, {
     onSuccess: (data) => {
       console.log({ data })
+      toast.success("ボード作成済み")
     },
     onError: (error) => {
       console.log({ error })
+      toast.error(error)
     }
   })
 

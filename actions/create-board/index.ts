@@ -29,7 +29,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     })
   } catch(error) {
     return {
-      error: "作成は失敗"
+      error: "作成失敗"
     }
   }
 
