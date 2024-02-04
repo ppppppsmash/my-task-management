@@ -15,6 +15,7 @@ import { FormInput } from "@/components/form/form-input"
 import { FormSubmit } from "@/components/form/form-submit"
 import React from "react"
 import { Button } from "@/components/ui/button"
+import { FormPicker } from "./form-picker"
 
 interface FormPopoverProps {
   children: React.ReactNode
@@ -75,6 +76,10 @@ export const FormPopover = ({
           action={onSubmit}
           className="space-y-4">
           <div className="space-y-4">
+            <FormPicker
+              id="image"
+              errors={fieldErrors}
+            />
             <FormInput
               id="title"
               label="ボードタイトル"
