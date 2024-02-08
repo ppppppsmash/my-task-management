@@ -6,6 +6,7 @@ import { Hint } from "@/components/hint"
 import { HelpCircle, User2 } from "lucide-react"
 
 import { FormPopover } from "@/components/form/form-popover"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export const BoardList = async () => {
   const { orgId } = auth()
@@ -71,6 +72,16 @@ export const BoardList = async () => {
           </div>  
         </FormPopover>
       </div>
+    </div>
+  )
+}
+
+BoardList.Skeleton = function SkeletonBoardList() {
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <Skeleton className="aspect-video h-full w-full p-2" />
+      <Skeleton className="aspect-video h-full w-full p-2" />
+      <Skeleton className="aspect-video h-full w-full p-2" />
     </div>
   )
 }
