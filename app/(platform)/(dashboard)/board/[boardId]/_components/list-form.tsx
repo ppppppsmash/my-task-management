@@ -1,13 +1,18 @@
 "use client"
 
-import { Plus } from "lucide-react"
+import { Plus, X } from "lucide-react"
 import { useState, useRef, ElementRef } from "react"
+import { useParams } from "next/navigation"
 
 import { ListWrapper } from "./list-wrapper"
 import { useEventListener, useOnClickOutside } from "usehooks-ts"
 import { FormInput } from "@/components/form/form-input"
+import { FormSubmit } from "@/components/form/form-submit"
+import { Button } from "@/components/ui/button"
 
 export const ListForm = () => {
+  const params = useParams()
+
   const formRef = useRef<ElementRef<"form">>(null)
   const inputRef = useRef<ElementRef<"input">>(null)
 
@@ -46,6 +51,26 @@ export const ListForm = () => {
             className="text-sm px-2 py-1 h-7 font-medium border-transparent hover:border-input focus:border-input transition"
             placeholder="タイトルを入力してください..."
           />
+
+          <input
+            hidden
+            value={params.boardId}
+            name="boardId"
+          />
+
+          <div className="flex items-center gap-x-1">
+            <FormSubmit>
+              リストを追加
+            </FormSubmit>
+
+            <Button
+              onClick={disableEditing}
+              size="sm"
+              variant="ghost"
+            >
+              <X className="h-5 w-5" />
+            </Button>
+          </div>
         </form>
       </ListWrapper>
     )
