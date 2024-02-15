@@ -1,9 +1,22 @@
 "use client"
 
-export const ListItem = () => {
+import { ListWithCards } from "@/types"
+import { ListHeader } from "./list-header"
+
+interface ListItemProps {
+  data: ListWithCards
+  index: number
+}
+
+export const ListItem = ({
+  data,
+  index
+}: ListItemProps) => {
   return (
-    <div>
-      List Item
-    </div>
+    <li className="shrink-0 h-full w-[272px] select-none">
+      <div className="w-full rounded-md bg-[#1f1f2f4] shadow-md pb-20">
+        <ListHeader />
+      </div>
+    </li>
   )
 }
