@@ -1,5 +1,7 @@
 "use client"
 
+import { ElementRef, useRef } from "react"
+
 import { List } from "@prisma/client"
 
 import {
@@ -25,9 +27,12 @@ export const ListOptions = ({
   data,
   onAddCard
 }: ListOptionsProps) => {
+  const closeRef = useRef<ElementRef<"button">>(null)
+
   const { execute: executeDelete } = useAction(deleteList, {
     onSuccess: (data) => {
       toast.success(`リスト "${data.title}" が削除された.`)
+      closeRef.current?.click()
     },
     onError: (error) => {
       toast.error(error)
@@ -40,6 +45,7 @@ export const ListOptions = ({
 
     executeDelete({ id, boardId})
   }
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -60,7 +66,7 @@ export const ListOptions = ({
           List actions
         </div>
 
-        <PopoverClose asChild>
+        <PopoverClose ref={closeRef} asChild>
           <Button
             className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600"
             variant="ghost"
