@@ -3,9 +3,12 @@
 import { useEffect, useState } from "react"
 import { DragDropContext, Droppable } from "@hello-pangea/dnd"
 
+import { useAction } from "@/hooks/use-action"
+import { updateListOrder } from "@/actions/update-list-order"
 import { ListWithCards } from "@/types"
 import { ListForm } from "./list-form"
 import { ListItem } from "./list-item"
+import { toast } from "sonner"
 
 interface ListContainerProps {
   data: ListWithCards[]
@@ -25,6 +28,15 @@ export const ListContainer = ({
   boardId
 }: ListContainerProps) => {
   const [orderedData, setOrderedData] = useState(data)
+
+  const { execute: executeUpdateListOrder } = useAction(updateListOrder, {
+    onSuccess: () => {
+      toast.success("リストが並び直された.")
+    },
+    onError: (error) => {
+      toast.error(error)
+    }
+  })
 
   useEffect(() => {
     setOrderedData(data)
@@ -54,6 +66,7 @@ export const ListContainer = ({
       }))
 
       setOrderedData(items)
+      executeUpdateListOrder({ items, boardId})
     }
 
     // User moves a card
@@ -122,7 +135,7 @@ export const ListContainer = ({
   }
 
   return (
-    <DragDropContext onDragEnd={() => {}}>
+    <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="lists" type="list" direction="horizontal">
         {(provided) => (
           <ol
