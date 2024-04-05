@@ -7,6 +7,7 @@ import { useCardModal } from "@/hooks/use-card-modal"
 
 import { CardWithList } from "@/types"
 import { fetcher } from "@/lib/fetcher"
+import { Header } from "./header"
 
 export const CardModal = () => {
   const id = useCardModal((state) => state.id)
@@ -24,7 +25,10 @@ export const CardModal = () => {
       onOpenChange={onClose}
     >
       <DialogContent>
-        {cardData?.title}
+        {!cardData
+          ? <Header.Skeleton />
+          : <Header data={cardData} />
+        }
       </DialogContent>
     </Dialog>
   )
