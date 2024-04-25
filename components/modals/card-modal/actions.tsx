@@ -1,6 +1,10 @@
 "use client"
 
 import { CardWithList } from "@/types"
+import { useAction } from "@/hooks/use-action"
+import { copyCard } from "@/actions/copy-card"
+import { deleteCard } from "@/actions/delete-card"
+
 import { Skeleton } from "@/components/ui/skeleton"
 import { Button } from "@/components/ui/button"
 import { Copy, Trash } from "lucide-react"
