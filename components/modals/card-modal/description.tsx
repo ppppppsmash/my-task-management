@@ -7,11 +7,14 @@ import { useQueryClient } from "@tanstack/react-query"
 import { AlignLeft } from "lucide-react"
 import { useEventListener, useOnClickOutside } from "usehooks-ts"
 
+import { useAction } from "@/hooks/use-action"
+import { updateCard } from "@/actions/update-card"
 import { CardWithList } from "@/types"
 import { Skeleton } from "@/components/ui/skeleton"
 import { FormTextarea } from "@/components/form/form-textarea"
 import { FormSubmit } from "@/components/form/form-submit"
 import { Button } from "@/components/ui/button"
+import { toast } from "sonner"
 
 interface DescriptionProps {
   data: CardWithList
@@ -48,9 +51,27 @@ export const Description = ({
   useEventListener("keydown", onKeyDown)
   useOnClickOutside(formRef, disableEditing)
 
+  const { execute, fieldErrors } = useAction(updateCard, {
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({
+        queryKey: ["card", data.id]
+      })
+      toast.success(`Card "${data.title}" が更新された.`)
+    },
+    onError: (error) => {
+      toast.error(error)
+    }
+  })
+
   const onSubmit = (formData: FormData) => {
     const description = formData.get("description") as string
     const boardId = params.boardId as string
+
+    execute({
+      id: data.id,
+      description,
+      boardId
+    })
   }
 
   return (
@@ -63,6 +84,7 @@ export const Description = ({
 
         {isEditing ? (
           <form
+            action={onSubmit}
             ref={formRef}
             className="space-y-2"
           >
@@ -71,6 +93,7 @@ export const Description = ({
               className="w-full mt-2"
               placeholder="Add a more detailed description"
               defaultValue={data.description || undefined}
+              errors={fieldErrors}
             />
             <div className="flex items-center gap-x-2">
               <FormSubmit>
