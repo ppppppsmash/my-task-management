@@ -57,6 +57,7 @@ export const Description = ({
         queryKey: ["card", data.id]
       })
       toast.success(`Card "${data.title}" が更新された.`)
+      disableEditing()
     },
     onError: (error) => {
       toast.error(error)
@@ -94,6 +95,7 @@ export const Description = ({
               placeholder="Add a more detailed description"
               defaultValue={data.description || undefined}
               errors={fieldErrors}
+              ref={textareaRef}
             />
             <div className="flex items-center gap-x-2">
               <FormSubmit>
