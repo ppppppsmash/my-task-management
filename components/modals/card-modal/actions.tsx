@@ -1,13 +1,40 @@
 "use client"
 
+import { CardWithList } from "@/types"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Button } from "@/components/ui/button"
+import { Copy, Trash } from "lucide-react"
 
-export const Actions = () => {
+interface ActionsProps {
+  data: CardWithList
+}
+
+export const Actions = ({
+  data
+}: ActionsProps) => {
   return (
-    <div>
-      <p>
+    <div className="space-y-2 mt-2">
+      <p className="text-xs font-semibold">
         Actions
       </p>
+
+      <Button
+        variant="gray"
+        className="w-full justify-start"
+        size="inline"
+      >
+        <Copy className="h-4 w-4 mr-2" />
+        Copy
+      </Button>
+
+      <Button
+        variant="gray"
+        className="w-full justify-start"
+        size="inline"
+      >
+        <Trash className="h-4 w-4 mr-2" />
+        Delete
+      </Button>
     </div>
   )
 }
