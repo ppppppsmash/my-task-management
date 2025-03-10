@@ -48,7 +48,7 @@ export const CardModal = () => {
               }
               {!auditLogsData
                 ? <Activity.Skeleton />
-                : <Activity items={auditLogsData} />
+                : <Activity items={Array.isArray(auditLogsData) ? auditLogsData : []} />
               }
             </div>
           </div>
